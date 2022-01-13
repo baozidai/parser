@@ -291,7 +291,7 @@ public class Parse {
         */
         //we could get the ping coordinates/type if we cared
         //entry.key = String.valueOf(message.getOrderType());
-        output(entry);
+//        output(entry);
     }
 
     @OnMessage(CDOTAUserMsg_ChatEvent.class)
