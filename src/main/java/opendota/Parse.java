@@ -498,6 +498,10 @@ public class Parse {
             //dota_gamerules_data.m_iGameMode = 22
             //dota_gamerules_data.m_unMatchID64 = 1193091757
             time = Math.round((float) getEntityProperty(grp, "m_pGameRules.m_fGameTime", null));
+            if(time < -89)
+            {
+                return;
+            }
             //draft timings
             if(draftStage == 2) {
 
