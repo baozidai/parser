@@ -82,7 +82,7 @@ public class Parse {
 		public Integer z;
 		public Float stuns;
 		public Integer hero_id;
-		public transient List<Item> hero_inventory;
+		public List<Item> hero_inventory;
         public Integer itemslot;
         public Integer charges;
         public Integer secondary_charges;
