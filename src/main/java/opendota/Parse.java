@@ -697,7 +697,7 @@ public class Parse {
                                 abilitiesEntry.abilitylevel = ability.abilityLevel;
                                 // We use the combatLogName & the ability id as some ability IDs are the same
                                 abilities_tracking.put(combatLogName+ability.id,ability.abilityLevel);
-                                output(abilitiesEntry);
+//                                output(abilitiesEntry);
                                 }
                             }
 
