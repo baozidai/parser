@@ -8,3 +8,4 @@ dependency-reduced-pom.xml
 *.bz2
 .idea/
 stats.iml
+scripts/
