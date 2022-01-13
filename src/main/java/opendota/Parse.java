@@ -726,7 +726,7 @@ public class Parse {
                                     startingItemsEntry.valuename = item.id;
                                     startingItemsEntry.targetname = combatLogName;
                                     startingItemsEntry.charges = item.num_charges;
-                                    output(startingItemsEntry);
+//                                    output(startingItemsEntry);
                                 }
                             }
                         }
