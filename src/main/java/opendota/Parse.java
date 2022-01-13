@@ -685,51 +685,7 @@ public class Parse {
                             //populate for combat log mapping
                             name_to_slot.put(combatLogName, entry.slot);
                             name_to_slot.put(combatLogName2, entry.slot);
-
-                            abilities = getHeroAbilities(ctx, e);
-                            for (Ability ability : abilities) {
-                                // Only push ability updates when the level changes
-                                if (abilities_tracking.get(combatLogName+ability.id) != ability.abilityLevel || abilities_tracking.isEmpty()){
-                                Entry abilitiesEntry = new Entry(time);
-                                abilitiesEntry.type = "DOTA_ABILITY_LEVEL";
-                                abilitiesEntry.targetname = combatLogName;
-                                abilitiesEntry.valuename = ability.id;
-                                abilitiesEntry.abilitylevel = ability.abilityLevel;
-                                // We use the combatLogName & the ability id as some ability IDs are the same
-                                abilities_tracking.put(combatLogName+ability.id,ability.abilityLevel);
-//                                output(abilitiesEntry);
-                                }
-                            }
-
                             entry.hero_inventory = getHeroInventory(ctx, e);
-                            if (time - gameStartTime - 1 == 0) {
-                                for (Item item : entry.hero_inventory) {
-                                    Entry startingItems = new Entry(time);
-                                    startingItems.type = "STARTING_ITEM";
-                                    startingItems.targetname = combatLogName;
-                                    startingItems.valuename = item.id;
-                                    startingItems.slot = entry.slot;
-                                    startingItems.value = (entry.slot < 5 ? 0 : 123) + entry.slot;
-                                    startingItems.itemslot = item.slot;
-                                    startingItems.charges = item.num_charges;
-                                    startingItems.secondary_charges = item.num_secondary_charges;
-//                                    output(startingItems);
-                                }
-                            }
-                            if (!isPlayerStartingItemsWritten.get(entry.slot) && entry.hero_inventory != null) {
-                                // Making something similar to DOTA_COMBATLOG_PURCHASE for each item in the beginning of the game
-                                isPlayerStartingItemsWritten.set(entry.slot, true);
-                                for (Item item : entry.hero_inventory) {
-                                    Entry startingItemsEntry = new Entry(time);
-                                    startingItemsEntry.type = "DOTA_COMBATLOG_PURCHASE";
-                                    startingItemsEntry.slot = entry.slot;
-                                    startingItemsEntry.value = (entry.slot < 5 ? 0 : 123) + entry.slot;
-                                    startingItemsEntry.valuename = item.id;
-                                    startingItemsEntry.targetname = combatLogName;
-                                    startingItemsEntry.charges = item.num_charges;
-//                                    output(startingItemsEntry);
-                                }
-                            }
                         }
                     }
                     output(entry);
@@ -812,51 +768,7 @@ public class Parse {
                             //populate for combat log mapping
                             name_to_slot.put(combatLogName, entry.slot);
                             name_to_slot.put(combatLogName2, entry.slot);
-
-                            abilities = getHeroAbilities(ctx, e);
-                            for (Ability ability : abilities) {
-                                // Only push ability updates when the level changes
-                                if (abilities_tracking.get(combatLogName+ability.id) != ability.abilityLevel || abilities_tracking.isEmpty()){
-                                    Entry abilitiesEntry = new Entry(time);
-                                    abilitiesEntry.type = "DOTA_ABILITY_LEVEL";
-                                    abilitiesEntry.targetname = combatLogName;
-                                    abilitiesEntry.valuename = ability.id;
-                                    abilitiesEntry.abilitylevel = ability.abilityLevel;
-                                    // We use the combatLogName & the ability id as some ability IDs are the same
-                                    abilities_tracking.put(combatLogName+ability.id,ability.abilityLevel);
-                                    output(abilitiesEntry);
-                                }
-                            }
-
                             entry.hero_inventory = getHeroInventory(ctx, e);
-                            if (time - gameStartTime - 1 == 0) {
-                                for (Item item : entry.hero_inventory) {
-                                    Entry startingItems = new Entry(time);
-                                    startingItems.type = "STARTING_ITEM";
-                                    startingItems.targetname = combatLogName;
-                                    startingItems.valuename = item.id;
-                                    startingItems.slot = entry.slot;
-                                    startingItems.value = (entry.slot < 5 ? 0 : 123) + entry.slot;
-                                    startingItems.itemslot = item.slot;
-                                    startingItems.charges = item.num_charges;
-                                    startingItems.secondary_charges = item.num_secondary_charges;
-//                                    output(startingItems);
-                                }
-                            }
-                            if (!isPlayerStartingItemsWritten.get(entry.slot) && entry.hero_inventory != null) {
-                                // Making something similar to DOTA_COMBATLOG_PURCHASE for each item in the beginning of the game
-                                isPlayerStartingItemsWritten.set(entry.slot, true);
-                                for (Item item : entry.hero_inventory) {
-                                    Entry startingItemsEntry = new Entry(time);
-                                    startingItemsEntry.type = "DOTA_COMBATLOG_PURCHASE";
-                                    startingItemsEntry.slot = entry.slot;
-                                    startingItemsEntry.value = (entry.slot < 5 ? 0 : 123) + entry.slot;
-                                    startingItemsEntry.valuename = item.id;
-                                    startingItemsEntry.targetname = combatLogName;
-                                    startingItemsEntry.charges = item.num_charges;
-//                                    output(startingItemsEntry);
-                                }
-                            }
                         }
                     }
                     output(entry);
