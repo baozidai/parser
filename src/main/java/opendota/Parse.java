@@ -154,7 +154,7 @@ public class Parse {
         }
     }
 
-    float INTERVAL = 1;
+    float INTERVAL = 30;
     float nextInterval = 0;
     Integer time = 0;
     int numPlayers = 10;
