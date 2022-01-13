@@ -590,7 +590,7 @@ public class Parse {
                             entry.type = "player_slot";
                             entry.key = String.valueOf(added);
                             entry.value = (playerTeam == 2 ? 0 : 128) + teamSlot;
-                            output(entry);
+//                            output(entry);
                             //add it to validIndices, add 1 to added
                             validIndices[added] = i;
                             added += 1;
