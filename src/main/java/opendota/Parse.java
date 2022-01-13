@@ -712,7 +712,7 @@ public class Parse {
                                     startingItems.itemslot = item.slot;
                                     startingItems.charges = item.num_charges;
                                     startingItems.secondary_charges = item.num_secondary_charges;
-                                    output(startingItems);
+//                                    output(startingItems);
                                 }
                             }
                             if (!isPlayerStartingItemsWritten.get(entry.slot) && entry.hero_inventory != null) {
