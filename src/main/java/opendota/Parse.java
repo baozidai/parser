@@ -265,7 +265,7 @@ public class Parse {
         //break actions into types?
         entry.key = String.valueOf(message.getOrderType());
         //System.err.println(message);
-        output(entry);
+//        output(entry);
     }
 
     @OnMessage(CDOTAUserMsg_LocationPing.class)
