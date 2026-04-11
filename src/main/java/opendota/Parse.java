@@ -864,7 +864,11 @@ public class Parse {
         if (eItem == null) {
             throw new UnknownItemFoundException(String.format("Can't find item by its handle (%d)", hItem));
         }
-        String itemName = stEntityNames.getNameByIndex(eItem.getProperty("m_pEntity.m_nameStringableIndex"));
+        Integer itemNameIdx = getAbilityEntityStringTableIndex(eItem);
+        if (itemNameIdx == null) {
+            throw new UnknownItemFoundException("Can't read item name string table index from entity");
+        }
+        String itemName = stEntityNames.getNameByIndex(itemNameIdx);
         if (itemName == null) {
             throw new UnknownItemFoundException("Can't get item name from EntityName string table");
         }
@@ -913,7 +917,11 @@ public class Parse {
         if (eAbility == null) {
             throw new UnknownAbilityFoundException(String.format("Can't find ability by its handle (%d)", hAbility));
         }
-        String abilityName = stEntityNames.getNameByIndex(eAbility.getProperty("m_pEntity.m_nameStringableIndex"));
+        Integer stringTableIdx = getAbilityEntityStringTableIndex(eAbility);
+        if (stringTableIdx == null) {
+            throw new UnknownAbilityFoundException("Can't read ability name string table index from entity");
+        }
+        String abilityName = stEntityNames.getNameByIndex(stringTableIdx);
         if (abilityName == null) {
             throw new UnknownAbilityFoundException("Can't get ability name from EntityName string table");
         }
@@ -923,6 +931,14 @@ public class Parse {
         ability.abilityLevel = eAbility.getProperty("m_iLevel");
 
         return ability;
+    }
+
+    private Integer getAbilityEntityStringTableIndex(Entity e) {
+        Integer idx = getEntityProperty(e, "m_pEntity.m_nameStringTableIndex", null);
+        if (idx == null) {
+            return getEntityProperty(e, "m_pEntity.m_nameStringableIndex", null);
+        }
+        return idx;
     }
 
     public <T> T getEntityProperty(Entity e, String property, Integer idx) {
